@@ -19,3 +19,9 @@ yarn-error.log
 
 expo-env.d.ts
 # @end expo-cli
+
+# We are using CNG
+android/
+ios/
+.pnp.cjs
+.pnp.loader.mjs

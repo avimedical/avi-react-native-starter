@@ -2,13 +2,16 @@
   "extends": "expo/tsconfig.base",
   "compilerOptions": {
     "strict": true,
+    "jsx": "react-jsx",
+    "allowUmdGlobalAccess": true,
+    "allowJs": true,
+    "checkJs": false,
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"],
       "@env": ["./src/lib/env.js"]
     },
-    "esModuleInterop": true,
-    "checkJs": true
+    "esModuleInterop": true
   },
   "exclude": [
     "node_modules",
@@ -16,6 +19,8 @@
     "metro.config.js",
     "docs",
     "cli",
+    "eslint.config.js",
+    "tailwind.config.js",
     "android",
     "ios",
     "lint-staged.config.js"
@@ -23,6 +28,9 @@
   "include": [
     "**/*.ts",
     "**/*.tsx",
+    "**/*.d.ts",
+    "**/*.js",
+    "**/*.jsx",
     ".expo/types/**/*.ts",
     "expo-env.d.ts",
     "nativewind-env.d.ts"

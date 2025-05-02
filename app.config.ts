@@ -20,13 +20,14 @@ const appIconBadgeConfig: AppIconBadgeConfig = {
   ],
 };
 
+// eslint-disable-next-line max-lines-per-function
 export default ({ config }: ConfigContext): ExpoConfig => ({
   ...config,
   name: Env.NAME,
   description: `${Env.NAME} Mobile App`,
   owner: Env.EXPO_ACCOUNT_OWNER,
   scheme: Env.SCHEME,
-  slug: 'obytesapp',
+  slug: 'aviapp',
   version: Env.VERSION.toString(),
   orientation: 'portrait',
   icon: './assets/icon.png',
@@ -45,6 +46,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
   },
   experiments: {
     typedRoutes: true,
+    reactCanary: true,
   },
   android: {
     adaptiveIcon: {
@@ -57,21 +59,26 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
     favicon: './assets/favicon.png',
     bundler: 'metro',
   },
-  plugins: [
-    [
-      'expo-splash-screen',
-      {
-        backgroundColor: '#2E3C4B',
-        image: './assets/splash-icon.png',
-        imageWidth: 150,
+  plugins:[
+    ['expo-splash-screen', {
+      backgroundColor: '#2E3C4B',
+      image: './assets/splash-icon.png',
+      imageWidth: 150,
+    }],
+    ['expo-font', {
+      fonts: ['./assets/fonts/Inter.ttf'],
+    }],
+    ['expo-build-properties', {
+      android: {
+        minSdkVersion: 33,
+        compileSdkVersion: 35,
+        targetSdkVersion: 35,
+        buildToolsVersion: '35.0.0',
       },
-    ],
-    [
-      'expo-font',
-      {
-        fonts: ['./assets/fonts/Inter.ttf'],
+      ios: {
+        deploymentTarget: '17.0',
       },
-    ],
+    }],
     'expo-localization',
     'expo-router',
     ['app-icon-badge', appIconBadgeConfig],

@@ -25,16 +25,22 @@ cd ./repo-name
 pnpm install
 ```
 
-To run the app on ios
+To run the app on iOS
 
 ```sh
-pnpm ios
+npx expo run ios
 ```
 
 To run the app on Android
 
 ```sh
-pnpm android
+npx expo run android
+```
+
+To run the app on Web
+
+```sh
+npx expo start --web
 ```
 
 ## ✍️ Documentation
