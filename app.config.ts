@@ -1,4 +1,3 @@
-/* eslint-disable max-lines-per-function */
 import type { ConfigContext, ExpoConfig } from '@expo/config';
 import type { AppIconBadgeConfig } from 'app-icon-badge/types';
 
@@ -26,7 +25,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
   description: `${Env.NAME} Mobile App`,
   owner: Env.EXPO_ACCOUNT_OWNER,
   scheme: Env.SCHEME,
-  slug: 'obytesapp',
+  slug: 'aviapp',
   version: Env.VERSION.toString(),
   orientation: 'portrait',
   icon: './assets/icon.png',
@@ -45,6 +44,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
   },
   experiments: {
     typedRoutes: true,
+    reactCanary: true,
   },
   android: {
     adaptiveIcon: {
@@ -59,6 +59,20 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
   },
   plugins: [
     [
+    [
+        'expo-build-properties',
+        {
+          android: {
+            minSdkVersion: 33, // required for braze
+            compileSdkVersion: 35,
+            targetSdkVersion: 35,
+            buildToolsVersion: '35.0.0',
+          },
+          ios: {
+            deploymentTarget: '17.0', // required for expo-maps
+          },
+        },
+    ],
       'expo-splash-screen',
       {
         backgroundColor: '#2E3C4B',
