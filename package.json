@@ -2,6 +2,9 @@
   "name": "aviapp",
   "version": "7.0.5",
   "private": true,
+  "engines": {
+    "node": ">=22.15.0"
+  },
   "main": "expo-router/entry",
   "scripts": {
     "start": "cross-env EXPO_NO_DOTENV=1 expo start",
