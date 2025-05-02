@@ -1,3 +1,4 @@
+/* eslint-disable max-lines-per-function */
 import type { ConfigContext, ExpoConfig } from '@expo/config';
 import type { AppIconBadgeConfig } from 'app-icon-badge/types';
 
@@ -19,6 +20,7 @@ const appIconBadgeConfig: AppIconBadgeConfig = {
   ],
 };
 
+// eslint-disable-next-line max-lines-per-function
 export default ({ config }: ConfigContext): ExpoConfig => ({
   ...config,
   name: Env.NAME,
@@ -57,35 +59,26 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
     favicon: './assets/favicon.png',
     bundler: 'metro',
   },
-  plugins: [
-    [
-    [
-        'expo-build-properties',
-        {
-          android: {
-            minSdkVersion: 33, // required for braze
-            compileSdkVersion: 35,
-            targetSdkVersion: 35,
-            buildToolsVersion: '35.0.0',
-          },
-          ios: {
-            deploymentTarget: '17.0', // required for expo-maps
-          },
-        },
-    ],
-      'expo-splash-screen',
-      {
-        backgroundColor: '#2E3C4B',
-        image: './assets/splash-icon.png',
-        imageWidth: 150,
+  plugins:[
+    ['expo-splash-screen', {
+      backgroundColor: '#2E3C4B',
+      image: './assets/splash-icon.png',
+      imageWidth: 150,
+    }],
+    ['expo-font', {
+      fonts: ['./assets/fonts/Inter.ttf'],
+    }],
+    ['expo-build-properties', {
+      android: {
+        minSdkVersion: 33,
+        compileSdkVersion: 35,
+        targetSdkVersion: 35,
+        buildToolsVersion: '35.0.0',
       },
-    ],
-    [
-      'expo-font',
-      {
-        fonts: ['./assets/fonts/Inter.ttf'],
+      ios: {
+        deploymentTarget: '17.0',
       },
-    ],
+    }],
     'expo-localization',
     'expo-router',
     ['app-icon-badge', appIconBadgeConfig],
