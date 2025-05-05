@@ -5,7 +5,7 @@ const typescriptEslintParser = require('@typescript-eslint/parser');
 const compat = new FlatCompat({ baseDirectory: __dirname });
 
 module.exports = {
-  root: true,
+  // root key removed (not supported in flat config)
   reportUnusedDisableDirectives: true,
   ignorePatterns: [
     'cli/**/*.js',
